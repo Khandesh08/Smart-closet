@@ -22,11 +22,6 @@ public class OutfitController {
     @Autowired
     private OutfitService outfitService;
 
-    @GetMapping
-    public List<Outfit> getAllOutfits() {
-        return outfitService.getAllOutfits();
-    }
-
     @PostMapping
     public Outfit createOutfit(@RequestBody Outfit outfit) {
         return outfitService.saveOutfit(outfit);
@@ -73,5 +68,14 @@ public class OutfitController {
         }
 
         return response;
+    }
+    @GetMapping("/")
+    public String showHomePage() {
+        return "index";  // This maps to index.html located in /src/main/resources/templates/
+    }
+    
+    @GetMapping
+    public List<Outfit> getAllOutfits() {
+        return outfitService.getAllOutfits(); // Directly return the list of outfits
     }
 }
